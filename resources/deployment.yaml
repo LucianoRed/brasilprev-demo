@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brasilprev
+  namespace: brasilprev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: brasilprev
+  template:
+    metadata:
+      labels:
+        app: brasilprev
+    spec:
+      containers:
+      - name: brasilprev
+        image: docker.io/lasher/brasilprev:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080 # Mude se a sua imagem escutar outra porta
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi

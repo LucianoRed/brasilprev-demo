@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: brasilprev-route
+  namespace: brasilprev
+spec:
+  host: brasilprev.4players.com.br
+  to:
+    kind: Service
+    name: brasilprev-service
+  port:
+    targetPort: 8080 # a mesma porta do container
+  tls:
+    termination: edge
+  wildcardPolicy: None
